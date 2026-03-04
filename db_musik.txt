@@ -1,0 +1,145 @@
+MariaDB [(none)]> create database db_musik;
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [(none)]> use db_musik;
+Database changed
+
+MariaDB [db_musik]> create table tb_artis(
+    -> id_artis int primary key auto_increment,
+    -> nama_artis varchar(50));
+Query OK, 0 rows affected (0.026 sec)
+
+MariaDB [db_musik]> create table tb_lagu(
+    -> id_lagu int primary key auto_increment,
+    -> judul_lagu varchar(100),
+    -> id_artis int,
+    -> foreign key (id_artis) references tb_artis(id_artis));
+Query OK, 0 rows affected (0.078 sec)
+
+MariaDB [db_musik]> insert into tb_artis
+    -> (id_artis, nama_artis) values
+    -> ('', 'Dewa 19');
+Query OK, 1 row affected, 1 warning (0.023 sec)
+
+MariaDB [db_musik]> select * from tb_artis;
++----------+------------+
+| id_artis | nama_artis |
++----------+------------+
+|        1 | Dewa 19    |
++----------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [db_musik]> insert into tb_artis
+    -> (id_artis, nama_artis) values
+    -> ('', 'Sheila On 7'),
+    -> ('', 'My Chemical Romance'),
+    -> ('', 'Avenged Sevenfold'),
+    -> ('', 'Taylor Swift');
+Query OK, 4 rows affected, 4 warnings (0.011 sec)
+Records: 4  Duplicates: 0  Warnings: 4
+
+
+MariaDB [db_musik]> select * from tb_artis;
++----------+---------------------+
+| id_artis | nama_artis          |
++----------+---------------------+
+|        1 | Dewa 19             |
+|        2 | Sheila On 7         |
+|        3 | My Chemical Romance |
+|        4 | Avenged Sevenfold   |
+|        5 | Taylor Swift        |
++----------+---------------------+
+5 rows in set (0.002 sec)
+
+MariaDB [db_musik]> insert into tb_lagu
+    -> (id_lagu, judul_lagu, id_artis) values
+    -> ('', 'Cinta Gila', 1),
+    -> ('', 'Hari Bersamanya', 2),
+    -> ('', 'This Is How I Disappear', 3),
+    -> ('', 'Seize The Day', 4);
+Query OK, 4 rows affected, 4 warnings (0.011 sec)
+Records: 4  Duplicates: 0  Warnings: 4
+
+MariaDB [db_musik]> select * from tb_artis;
++----------+---------------------+
+| id_artis | nama_artis          |
++----------+---------------------+
+|        1 | Dewa 19             |
+|        2 | Sheila On 7         |
+|        3 | My Chemical Romance |
+|        4 | Avenged Sevenfold   |
+|        5 | Taylor Swift        |
++----------+---------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [db_musik]> select * from tb_lagu;
++---------+-------------------------+----------+
+| id_lagu | judul_lagu              | id_artis |
++---------+-------------------------+----------+
+|       1 | Cinta Gila              |        1 |
+|       2 | Hari Bersamanya         |        2 |
+|       3 | This Is How I Disappear |        3 |
+|       4 | Seize The Day           |        4 |
++---------+-------------------------+----------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_musik]> insert into tb_lagu
+    -> (id_lagu, judul_lagu, id_artis) values
+    -> ('', 'Gunslinger', 4);
+Query OK, 1 row affected, 1 warning (0.005 sec)
+
+MariaDB [db_musik]> select * from tb_lagu;
++---------+-------------------------+----------+
+| id_lagu | judul_lagu              | id_artis |
++---------+-------------------------+----------+
+|       1 | Cinta Gila              |        1 |
+|       2 | Hari Bersamanya         |        2 |
+|       3 | This Is How I Disappear |        3 |
+|       4 | Seize The Day           |        4 |
+|       5 | Gunslinger              |        4 |
++---------+-------------------------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [db_musik]> select tb_lagu.judul_lagu, tb_artis.nama_artis
+    -> from tb_lagu
+    -> inner join tb_artis on tb_lagu.id_artis = tb_artis.id_artis;
++-------------------------+---------------------+
+| judul_lagu              | nama_artis          |
++-------------------------+---------------------+
+| Cinta Gila              | Dewa 19             |
+| Hari Bersamanya         | Sheila On 7         |
+| This Is How I Disappear | My Chemical Romance |
+| Seize The Day           | Avenged Sevenfold   |
+| Gunslinger              | Avenged Sevenfold   |
++-------------------------+---------------------+
+5 rows in set (0.002 sec)
+
+MariaDB [db_musik]> select tb_artis.nama_artis, tb_lagu.judul_lagu
+    -> from tb_artis
+    -> left join tb_lagu on tb_artis.id_artis = tb_lagu.id_artis;
++---------------------+-------------------------+
+| nama_artis          | judul_lagu              |
++---------------------+-------------------------+
+| Dewa 19             | Cinta Gila              |
+| Sheila On 7         | Hari Bersamanya         |
+| My Chemical Romance | This Is How I Disappear |
+| Avenged Sevenfold   | Seize The Day           |
+| Avenged Sevenfold   | Gunslinger              |
+| Taylor Swift        | NULL                    |
++---------------------+-------------------------+
+6 rows in set (0.002 sec)
+
+MariaDB [db_musik]> select tb_lagu.judul_lagu, tb_artis.nama_artis
+    -> from tb_lagu
+    -> right join tb_artis on tb_lagu.id_artis = tb_artis.id_artis;
++-------------------------+---------------------+
+| judul_lagu              | nama_artis          |
++-------------------------+---------------------+
+| Cinta Gila              | Dewa 19             |
+| Hari Bersamanya         | Sheila On 7         |
+| This Is How I Disappear | My Chemical Romance |
+| Seize The Day           | Avenged Sevenfold   |
+| Gunslinger              | Avenged Sevenfold   |
+| NULL                    | Taylor Swift        |
++-------------------------+---------------------+
+6 rows in set (0.002 sec)
