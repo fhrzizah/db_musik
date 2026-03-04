@@ -86,7 +86,7 @@ select * from tb_lagu;
 5 rows in set (0.001 sec)
 ```
 ### 3. Mempraktikkan Tipe-Tipe JOIN
-# INNER JOIN
+#### INNER JOIN
 ```sql
 select tb_lagu.judul_lagu, tb_artis.nama_artis
     -> from tb_lagu
@@ -102,7 +102,7 @@ select tb_lagu.judul_lagu, tb_artis.nama_artis
 +-------------------------+---------------------+
 5 rows in set (0.002 sec)
 ```
-# LEFT JOIN
+#### LEFT JOIN
 ```sql
 select tb_artis.nama_artis, tb_lagu.judul_lagu
     -> from tb_artis
@@ -119,7 +119,7 @@ select tb_artis.nama_artis, tb_lagu.judul_lagu
 +---------------------+-------------------------+
 6 rows in set (0.002 sec)
 ```
-# RIGHT JOIN
+#### RIGHT JOIN
 ```sql
 select tb_lagu.judul_lagu, tb_artis.nama_artis
     -> from tb_lagu
