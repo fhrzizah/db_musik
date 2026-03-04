@@ -37,3 +37,57 @@ CREATE TABLE tb_lagu(
     id_artis INT,
     FOREIGN KEY (id_artis) REFERENCES tb_artis(id_artis)
 );
+```
+### 2. Menginput Value
+```sql
+insert into tb_artis
+    -> (id_artis, nama_artis) values
+    -> ('', 'Dewa 19'),
+    -> ('', 'Sheila On 7'),
+    -> ('', 'My Chemical Romance'),
+    -> ('', 'Avenged Sevenfold'),
+    -> ('', 'Taylor Swift');
+Query OK, 5 rows affected, 5 warnings (0.011 sec)
+Records: 5  Duplicates: 0  Warnings: 5
+
+select * from tb_artis;
++----------+---------------------+
+| id_artis | nama_artis          |
++----------+---------------------+
+|        1 | Dewa 19             |
+|        2 | Sheila On 7         |
+|        3 | My Chemical Romance |
+|        4 | Avenged Sevenfold   |
+|        5 | Taylor Swift        |
++----------+---------------------+
+5 rows in set (0.002 sec)
+
+insert into tb_lagu
+    -> (id_lagu, judul_lagu, id_artis) values
+    -> ('', 'Cinta Gila', 1),
+    -> ('', 'Hari Bersamanya', 2),
+    -> ('', 'This Is How I Disappear', 3),
+    -> ('', 'Seize The Day', 4);
+    -> ('', 'Gunslinger', 4);
+
+Query OK, 5 rows affected, 5 warnings (0.011 sec)
+Records: 5  Duplicates: 0  Warnings: 5
+
+select * from tb_lagu;
++---------+-------------------------+----------+
+| id_lagu | judul_lagu              | id_artis |
++---------+-------------------------+----------+
+|       1 | Cinta Gila              |        1 |
+|       2 | Hari Bersamanya         |        2 |
+|       3 | This Is How I Disappear |        3 |
+|       4 | Seize The Day           |        4 |
+|       5 | Gunslinger              |        4 |
++---------+-------------------------+----------+
+5 rows in set (0.001 sec)
+```
+
+
+
+
+
+
