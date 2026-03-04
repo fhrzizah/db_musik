@@ -37,4 +37,3 @@ CREATE TABLE tb_lagu(
     id_artis INT,
     FOREIGN KEY (id_artis) REFERENCES tb_artis(id_artis)
 );
-EXIT;
