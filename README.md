@@ -85,7 +85,57 @@ select * from tb_lagu;
 +---------+-------------------------+----------+
 5 rows in set (0.001 sec)
 ```
-
+### 3. Mempraktikkan Tipe-Tipe JOIN
+# INNER JOIN
+```sql
+select tb_lagu.judul_lagu, tb_artis.nama_artis
+    -> from tb_lagu
+    -> inner join tb_artis on tb_lagu.id_artis = tb_artis.id_artis;
++-------------------------+---------------------+
+| judul_lagu              | nama_artis          |
++-------------------------+---------------------+
+| Cinta Gila              | Dewa 19             |
+| Hari Bersamanya         | Sheila On 7         |
+| This Is How I Disappear | My Chemical Romance |
+| Seize The Day           | Avenged Sevenfold   |
+| Gunslinger              | Avenged Sevenfold   |
++-------------------------+---------------------+
+5 rows in set (0.002 sec)
+```
+# LEFT JOIN
+```sql
+select tb_artis.nama_artis, tb_lagu.judul_lagu
+    -> from tb_artis
+    -> left join tb_lagu on tb_artis.id_artis = tb_lagu.id_artis;
++---------------------+-------------------------+
+| nama_artis          | judul_lagu              |
++---------------------+-------------------------+
+| Dewa 19             | Cinta Gila              |
+| Sheila On 7         | Hari Bersamanya         |
+| My Chemical Romance | This Is How I Disappear |
+| Avenged Sevenfold   | Seize The Day           |
+| Avenged Sevenfold   | Gunslinger              |
+| Taylor Swift        | NULL                    |
++---------------------+-------------------------+
+6 rows in set (0.002 sec)
+```
+# RIGHT JOIN
+```sql
+select tb_lagu.judul_lagu, tb_artis.nama_artis
+    -> from tb_lagu
+    -> right join tb_artis on tb_lagu.id_artis = tb_artis.id_artis;
++-------------------------+---------------------+
+| judul_lagu              | nama_artis          |
++-------------------------+---------------------+
+| Cinta Gila              | Dewa 19             |
+| Hari Bersamanya         | Sheila On 7         |
+| This Is How I Disappear | My Chemical Romance |
+| Seize The Day           | Avenged Sevenfold   |
+| Gunslinger              | Avenged Sevenfold   |
+| NULL                    | Taylor Swift        |
++-------------------------+---------------------+
+6 rows in set (0.002 sec)
+```
 
 
 
