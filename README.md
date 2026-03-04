@@ -1,6 +1,6 @@
 # 🎵 Database Musik
 
-Proyek ini berisi dokumentasi latihan manipulasi database relasional menggunakan **MariaDB**. Fokus utama dari latihan ini adalah mengimplementasikan hubungan antar tabel (*Foreign Key*) dan mempraktikkan berbagai tipe **JOIN** untuk menggabungkan data.
+Proyek ini berisi latihan database menggunakan **MariaDB**. Fokus utama dari latihan ini adalah mengimplementasikan hubungan antar tabel (*Foreign Key*) dan mempraktikkan berbagai tipe **JOIN** untuk menggabungkan data.
 
 ## 📊 Struktur Database
 
